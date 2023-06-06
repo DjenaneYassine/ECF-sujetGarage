@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.icon{
+    height: 20px; 
+    width: 20px; 
+    color: white;
+}
