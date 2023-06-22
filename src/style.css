@@ -353,6 +353,8 @@ h2{
 .wrapper-line{
     width: 100%;
     height: 5%;
+    margin-top: 50px;
+    margin-bottom: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -366,14 +368,23 @@ h2{
 
 .contain-avis-client{
     display: flex;
+    align-items: center;
     justify-content: center;
     gap: 20px;
 }
 
 
 .avis{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
     width: 400px;
-    border: 1px solid red;
+    box-shadow: 0 0 13px 8px #0000001e;
+    border-radius: 5px;
+    padding: 15px 30px 0px 30px;
+    
 }
 
 .contain-star{
@@ -382,10 +393,121 @@ h2{
     justify-content: center;
 }
 
+.avis > p{
+    text-align: center;
+    font-size: 13px;
+}
+
+.avis > bold{
+    padding-top: 20px;
+    font-weight: 800;
+}
+
+.avi1 > p, .avi3 > p{
+    opacity: 0.5;
+}
+
+.avi1 > bold, .avi3 > bold{
+    opacity: 0.5;
+}
+.avi2{
+    height: 300px;
+    width: 450px;
+    justify-content: space-around;
+}
+
+.avi2 > p{
+ font-size: 15px;
+ padding-top: 20px;
+}
+
+.avi2 > bold{
+    font-size: 18px;
+}
 .avi2 > svg{
+    width: 85px;
+    position: relative;
+    top: 30px;
+    left: 150px;
 }
 
 
 /* flex avis client */
 
 /*------Page main------*/
+
+/*------Page footer------*/
+
+
+.partenaire{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.partenaire > a > svg {
+    width: 45px;
+}
+.wrapper-footer{
+    background-color:#262526;
+    height: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contain-footer{
+    display: flex;
+    gap: 8%;
+    height: 60%;
+    width: 70%;
+}
+.garage-v-parrot{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    font-size: 13px;
+}
+
+.garage-v-parrot > div > h2{
+    color: #D92332;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.1;
+}
+
+.logo-footer{
+    width: 51px;
+}
+
+.menu, .contact, .horaire{
+    color: white;
+    height: 100%;
+
+}
+
+.menu > div > h3, .contact > div > h3, .horaire > div > h3{
+    color: #D92332;
+    font-weight: 500;
+}
+
+.menu > div > div > ul, .contact > div > div > ul, .horaire > div > div > ul  {
+    height: 100%;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu > div > div > ul > li, .contact > div > div > ul > li, .horaire > div > div > ul > li {
+    margin-top: 24px;
+}
+
+
+
+
+
+/*------Page footer------*/
