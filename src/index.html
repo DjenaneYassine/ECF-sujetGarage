@@ -5,13 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../dist/output.css" rel="stylesheet">
   <link href="./style.css" rel="stylesheet">
+  <link href="./modal-devis/modal-devis.css" rel="stylesheet">
   <title>Garage V.Parrot</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600;700;800;900&display=swap');
   </style>
   <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
 </head>
 <body class="text-xs" style="font-family:'Noto Sans'; font-weight: 200;">
+<!--Modal -->
+<div id="wrapperModal-devis">
+    <!-- Modal content -->
+    <div class="contentModal-devis">
+        <div id="devis-maVoiture"></div>
+        <div id="devis-monDevis"></div>
+        <div id="devis-monGarage"></div>
+        <div id="devis-monRdv"></div>
+        <div id="devis-monHoraire"></div>
+    </div>
+    <div id="modalValid"></div>
+
+</div>
+    
     <header>
         <div class="flex items-center justify-between text-white m-0 h-15" style="height: 70px; background-color: #262526f3;">
             <div class="logo ml-10">
@@ -281,7 +297,7 @@
                             Conseils entretien et prévention
                         </div>
                         <div class="btn-devis item-25">
-                            <button id="btnModalDevis" style="font-size: 15px;">
+                            <button id="btn-devis" style="font-size: 15px;" href="./modal-devis/modal-devis.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path id="arrow-return-right_1_" data-name="arrow-return-right (1)" d="M1.536,1.5A.586.586,0,0,0,1,2.125v6a2.928,2.928,0,0,0,2.678,3.125H14.17l-3.586,4.182a.7.7,0,0,0,0,.885.484.484,0,0,0,.759,0l4.5-5.25a.7.7,0,0,0,0-.885l-4.285-5a.484.484,0,0,0-.759,0,.7.7,0,0,0,0,.885L14.17,10H3.678A1.757,1.757,0,0,1,2.071,8.125v-6A.586.586,0,0,0,1.536,1.5Z" transform="translate(-0.5 -1)" fill="#f2f2f2" stroke="#f2f2f2" stroke-width="1" fill-rule="evenodd"/>
                                   </svg>
@@ -435,7 +451,7 @@
                         <h3>MENU</h3>
                         <div>
                             <ul>
-                                <li><a href="#">Acceuil</a></li>
+                                <li><a href="#">Accueil</a></li>
                                 <li><a href="#">Services</a></li>
                                 <li><a href="#">Le garage</a></li>
                                 <li><a href="#">Voiture d'occasion</a></li>
