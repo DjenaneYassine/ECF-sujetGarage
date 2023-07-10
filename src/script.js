@@ -84,12 +84,36 @@
         modal.style.display = "none";
         location.reload();
     }
-
-
-
-
-
-
-
-
 //------ MODAL DEVIS ------//
+
+//------ MODAL Login/Register ------//
+
+//Boutton Login Index
+var btnLogin = document.querySelector("body > header > div.flex.items-center.justify-between.text-white.m-0.h-15 > nav > ul > li.connect.mr-10.border-2.border-red-500.btn-top > a");
+//Boutton Register
+var btn = document.getElementById("btn-devis");
+//Wrapper modal
+var modalWrapperLogin = document.getElementById("wrapperModal-login");
+//content modal
+var modalLogin = document.getElementById("modal-login")
+
+//Ouvre la modale "Connection"
+async function clicklogin(){
+    modalWrapperLogin.style.display ="block";
+    await loadPage(modalLogin, "./modal-login/userLogin.php")
+};
+
+
+
+
+
+
+
+
+
+
+
+
+//------ MODAL Login/Register ------//
+
+

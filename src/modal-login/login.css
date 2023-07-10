@@ -1,0 +1,203 @@
+#wrapperModal-login {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    right: 0;
+    top: 70px;
+    width: 500px;
+    height: 600px;
+    overflow: auto;
+    background-color: #262526;
+    overflow: hidden;
+
+  }
+
+/*--- Modal Login ---*/
+
+#containModal-login{
+  height: 100%;
+  width: 100%;
+}
+
+#modal-login{
+  height: 600px;
+  width: 500px;
+}
+
+.contain-modal-login{
+  padding: 8%;
+  height: 100%;
+  width: 100%;
+}
+
+/* Administrateur ou employé  */
+.href{
+  width: 100%;
+  display: flex;
+
+}
+
+.href > div > a {
+  font-size: small;
+  font-weight: 500;
+}
+
+.admin{
+  border-bottom: 2px solid #D92332;
+}
+
+.employe{
+  margin-left: 50px;
+}
+/* Administrateur ou employé  */
+
+/* Bloc Error */
+
+/* Bloc Error */
+
+/* Title */
+h2{
+  color: white;
+  font-weight: 700;
+  padding-top: 10%;
+}
+/* Title */
+
+/* Form */
+input{
+  width: 100%;
+  height: 70px;
+  margin-top: 10%;
+  background-color: #4545454d;
+  position: relative;
+  text-indent: 10px;
+
+}
+
+input[type="text"]::placeholder, input[type="password"]::placeholder{
+  position: absolute;
+  top: 0;
+  text-indent: 10px;
+  font-size: small;
+  font-weight: 500;
+
+}
+
+#password::-webkit-input-placeholder, #pseudo::-webkit-input-placeholder {
+  padding-top: 5px;
+}
+
+#password{
+  margin-top: 10px;
+}
+
+.MemoryAndmdpForget{
+  color: #ffffff6b;
+  font-size: small;
+  font-weight: 400;
+  padding-top: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+input[type="checkbox"] {
+  accent-color: #262526;
+  border: 2px solid #4545454d;
+  background: transparent;
+  border-radius: 0px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+;
+
+}
+input[type="checkbox"]:checked {
+  -webkit-appearance: checkbox; /* Inverse l'apparence */
+  -moz-appearance: checkbox;
+  appearance: checkbox;
+}
+input[type="checkbox"]:hover{
+  background: none;
+}
+
+.memory{
+  display: flex;
+}
+
+.memory > input{
+  height: 20px;
+  width: 20px;
+  background: none;
+  border: 2px solid #4545454d;
+  vertical-align: top;
+  margin-right: 5px;
+  margin-top: 0;
+}
+
+/* Form */
+
+/* Message client */
+
+.err{
+  margin-top: 10px;
+  width: 100%;
+  height: 45px;
+  border: 1px solid red;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+#succesLogin{
+  border: 1px solid #32CD32;
+  background: #32cd324f;
+  
+}
+
+#errorLogin{
+  border: 1px solid #D94350;
+  background: #d943505e;
+}
+
+/* Message client */
+
+/* Button form */
+
+.contain-btnLogin{
+  margin-top: 20%;
+  width: 100%;
+  display: flex;
+  gap: 2%;
+}
+
+.btnFormLogin{
+  background: #D92332;
+  width: 49%;
+  height: 45px;
+  border-radius: 2px; 
+  font-weight: 500;
+}
+/* Button form */
+.wrapper-btn-deco{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#btn-login{
+  color: rgba(255, 255, 255, 0.575);
+  cursor: pointer;
+  width: 200px;
+  height: 40px;
+  font-weight: 400;
+}
+
+#btn-login:hover{
+  color: white;
+}
+/*--- Modal Login ---*/
+
+

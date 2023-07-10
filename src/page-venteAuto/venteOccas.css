@@ -1,0 +1,27 @@
+/*--- Header ---*/
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+/* Bar nav */
+.icon{
+    height: 20px;
+    width: 20px;
+    color: white;
+}
+
+.btn-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 35px;
+    border-radius: 2px;
+}
+
+#separation{
+    height: 50px;
+    border: 1px solid white;
+}
+/* Bar nav */

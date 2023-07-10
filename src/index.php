@@ -1,11 +1,12 @@
 <!doctype html>
 <html style="height: 100%" >
-<head>
+    <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../dist/output.css" rel="stylesheet">
   <link href="./style.css" rel="stylesheet">
   <link href="./modal-devis/modal-devis.css" rel="stylesheet">
+  <link href="./modal-login/login.css" rel="stylesheet">
   <title>Garage V.Parrot</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600;700;800;900&display=swap');
@@ -13,7 +14,14 @@
   <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
 </head>
-<body class="text-xs" style="font-family:'Noto Sans'; font-weight: 200;">
+<?php 
+    session_start();
+    require_once "./CRUD-Admin/mesFonctions.php";
+    require_once './CRUD-Admin/mesFonctionsSQL.php';
+
+    $names = getNameServices();
+?>
+<body id="body" class="text-xs" style="font-family:'Noto Sans'; font-weight: 200;">
 <!--Modal -->
 <div id="wrapperModal-devis">
     <!-- Modal content -->
@@ -25,11 +33,10 @@
         <div id="devis-monHoraire"></div>
     </div>
     <div id="modalValid"></div>
-
 </div>
     
     <header>
-        <div class="flex items-center justify-between text-white m-0 h-15" style="height: 70px; background-color: #262526f3;">
+        <div class="contain-nav flex items-center justify-between text-white m-0 h-15" style="height: 70px; background-color: #262526f3;">
             <div class="logo ml-10">
                 <div class="border-2 border-white-500 p-1 pb-2" 
                      style=" border-radius: 2px; font-weight: 500;">
@@ -39,9 +46,14 @@
             <nav class="min-h-screen">
                 <ul class="flex items-center" style="font-weight: 300">
                     <li class="mr-10"><a href="#">Accueil</a></li>
+                    <?php if(isset($_SESSION['role']) &&  $_SESSION['role'] == "admin") {
+                        echo '<li class="mr-10"><a href="#">Administrateur</a></li>';
+                    }elseif(isset($_SESSION['role']) &&  $_SESSION['role'] == "employé"){
+                        echo '<li class="mr-10"><a href="#">Employer</a></li>';
+                    }; ?>
                     <li class="mr-10"><a href="#">Services</a></li>
                     <li class="mr-10"><a href="#">Le garage</a></li>
-                    <li class="mr-10"><a href="#">Voiture d'occasion</a></li>
+                    <li class="mr-10"><a href="./page-venteAuto/venteOccas.html">Voiture d'occasion</a></li>
                     <li class="mr-10"><a href="#">A propos</a></li>
                     <li class="rdv mr-10 border-2 border-white-500 btn-top" >
                         <a class="" href="#">Prendre rendez-vous</a>
@@ -49,12 +61,19 @@
                     <div class="mr-10" id="separation"></div>
                     <li class="connect mr-10 border-2 border-red-500 btn-top" 
                         style="border: 4px solid #D92332; background-color: #D92332;">
-                        <a class="" href="#">Connexion</a>
+                        <a onclick="clicklogin()" class="" href="#">Connexion</a>
                     </li>
                 </ul>
+                <div id="wrapperModal-login">
+                    <div id="contentModal-login">
+                        <div id="modal-login">
+                            
+                        </div>
+                    </div>
+                </div>
             </nav>
         </div>
-        <div class="ml-10 mt-10 text-white flex flex-col" style="font-size: 100px; font-weight: 800; height: 30%; border-left: 2px solid white; align-items: center; margin-top: 40px;">
+        <div class="wrapper-title-h1 ml-10 mt-10 text-white flex flex-col" style="font-size: 100px; font-weight: 800; height: 30%; border-left: 2px solid white; align-items: center; padding-top: 40px;">
             <div class="text-white" style="font-weight: 800; padding-left: 20px;" >
                 <h1>
                     <div>Garage</div>
@@ -122,7 +141,7 @@
             </div>
         </div>
     </header>
-    <main style="height: 2200px; font-weight: 400;">
+    <main style="height: 3000px; font-weight: 400;">
         <div class="wrapper-main-bloc1 flex">
             <div class="img1-main">
                 <img src="../img/3-kuah4.png">
@@ -152,150 +171,9 @@
                         <span class="service-inclus">SERVICES INCLUS</span>
                     </h2>
                     <div class="container-grid-services">
-                        <div class="item item-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Réparation mécanique générale
-                        </div>
-                        <div class="item item-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Entretien périodique et vidange d'huile
-                        </div>
-                        <div class="item item-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Révision des freins
-                        </div>
-                        <div class="item item-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Diagnostic électronique
-                        </div>
-                        <div class="item item-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Changement de pneus
-                        </div>
-                        <div class="item item-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Climatisation et refroidissement
-                        </div>
-                        <div class="item item-7">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Freins et systèmes de suspension
-                        </div>
-                        <div class="item item-8">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Révision de la transmission
-                        </div>
-                        <div class="item item-9">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Systèmes électriques et éclairage
-                        </div>
-                        <div class="item item-10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Réparation carrosserie et peinture
-                        </div>
-                        <div class="item item-11">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Service de remorquage
-                        </div>
-                        <div class="item item-12">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Contrôle technique et certifications
-                        </div>
-                        <div class="item item-13">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Réparation système d'échappement
-                        </div>
-                        <div class="item item-14">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Géométrie et alignement des roues
-                        </div>
-                        <div class="item item-15">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Réparation de la climatisation
-                        </div>
-                        <div class="item item-16">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Achat/vente véhicules d'occasion
-                        </div>
-                        <div class="item item-17">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Batteries et système de charge
-                        </div>
-                        <div class="item item-18">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Systèmes de verrouillage centralisé
-                        </div>
-                        <div class="item item-19">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Nettoyage et polissage automobile
-                        </div>
-                        <div class="item item-20">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Dépannage d'urgence routier
-                        </div>
-                        <div class="item item-21">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Remplacement courroies de distribution
-                        </div>
-                        <div class="item item-22">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Remplacement courroies de distribution
-                        </div>
-                        <div class="item item-23">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Installation systèmes de sécurité
-                        </div>
-                        <div class="item item-24">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="11.963" height="16.622" viewBox="0 0 11.963 16.622">
-                                <path id="chevron-right" d="M4.729,1.675a.961.961,0,0,1,1.109,0l9.394,7.186a.506.506,0,0,1,0,.848L5.838,16.9a.962.962,0,0,1-1.109,0,.506.506,0,0,1,0-.848l8.842-6.762L4.729,2.523A.539.539,0,0,1,4.5,2.1a.539.539,0,0,1,.23-.424Z" transform="translate(-3.999 -0.999)" fill="#d92332" stroke="#d92332" stroke-width="1" fill-rule="evenodd"/>
-                            </svg>
-                            Conseils entretien et prévention
-                        </div>
+                        <?php 
+                            gridDynamique($names);        
+                        ?>
                         <div class="btn-devis item-25">
                             <button id="btn-devis" style="font-size: 15px;" href="./modal-devis/modal-devis.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
@@ -420,15 +298,6 @@
         </div>
     </main>
     <footer>
-        <!-- <div class="partenaire">
-            <a id="audi" href="">
-                <svg height="24" width="69" xmlns="http://www.w3.org/2000/svg"><path d="M56.927 0a11.798 11.798 0 00-7.495 2.671A11.906 11.906 0 0041.9 0a11.719 11.719 0 00-7.494 2.671C32.347 1.006 29.745 0 26.91 0a11.798 11.798 0 00-7.494 2.671C17.358 1.006 14.756 0 11.92 0 5.32 0 0 5.303 0 11.884c0 6.58 5.32 11.884 11.921 11.884 2.835 0 5.475-1.007 7.495-2.671 2.058 1.664 4.66 2.67 7.494 2.67 2.835 0 5.475-1.006 7.495-2.67a11.906 11.906 0 007.533 2.67c2.874 0 5.475-1.006 7.533-2.67 2.058 1.664 4.66 2.67 7.495 2.67 6.601 0 11.921-5.302 11.921-11.883C68.848 5.342 63.528 0 56.927 0zm-7.495 17.226a9.126 9.126 0 01-1.708-5.342c0-1.974.621-3.832 1.708-5.342a9.126 9.126 0 011.709 5.342c0 2.013-.66 3.832-1.709 5.342zm-15.027 0a9.126 9.126 0 01-1.709-5.342c0-1.974.621-3.832 1.709-5.342a9.126 9.126 0 011.708 5.342c0 2.013-.66 3.832-1.708 5.342zm-15.028 0a9.126 9.126 0 01-1.709-5.342c0-1.974.622-3.832 1.709-5.342a9.126 9.126 0 011.708 5.342c0 2.013-.66 3.832-1.708 5.342zM2.602 11.884c0-5.071 4.116-9.213 9.242-9.213a9.22 9.22 0 015.63 1.897c-1.592 2.013-2.524 4.529-2.524 7.316 0 2.748.932 5.303 2.524 7.316-1.553 1.2-3.495 1.897-5.63 1.897-5.087 0-9.242-4.103-9.242-9.213zM21.24 19.2c1.592-2.013 2.524-4.529 2.524-7.316 0-2.749-.932-5.303-2.524-7.316 1.553-1.2 3.495-1.897 5.63-1.897 2.136 0 4.078.697 5.63 1.897-1.591 2.013-2.523 4.529-2.523 7.316 0 2.748.932 5.303 2.524 7.316-1.553 1.2-3.495 1.897-5.63 1.897-2.136 0-4.078-.697-5.631-1.897zm15.028 0c1.592-2.013 2.524-4.529 2.524-7.316 0-2.749-.932-5.303-2.524-7.316 1.553-1.2 3.494-1.897 5.63-1.897a9.22 9.22 0 015.63 1.897c-1.591 2.013-2.523 4.529-2.523 7.316 0 2.748.932 5.303 2.524 7.316-1.554 1.2-3.495 1.897-5.63 1.897a9.22 9.22 0 01-5.631-1.897zm20.658 1.897a9.22 9.22 0 01-5.63-1.897c1.591-2.013 2.523-4.529 2.523-7.316 0-2.749-.932-5.303-2.524-7.316 1.554-1.2 3.495-1.897 5.63-1.897 5.088 0 9.243 4.103 9.243 9.213 0 5.11-4.155 9.213-9.242 9.213z" fill="#000" fill-rule="evenodd"></path></svg>
-            </a>
-            <a id="bmw" href=""></a>
-            <a id="ferr" href=""></a>
-            <a id="wol" href=""></a>
-            <a id="mer" href=""></a>
-        </div> -->
         <div class="wrapper-footer">
             <div class="contain-footer">
                 <div class="garage-v-parrot">
@@ -482,6 +351,24 @@
                                 <li>Lundi au Vendredi : 08:45 - 12:00, 14:00 - 18:00</li>
                                 <li>Samedi : 08:45 - 12:00</li>
                                 <li>Dimanche : Fermé</li>
+                                <li>Le garage est :<?php if(openOrClose()==true){ 
+                                                                echo '<span class="font-open">Ouvert</span>';}
+                                                            else{
+                                                                echo '<span class="font-close">Fermer</span>';
+                                                            };
+                                ?></li >
+                                <?php
+                                if(isset($_SESSION['role'])&& $_SESSION['role']=='admin'){
+
+                                    echo '<form class="form-horaire" action="./CRUD-Admin/mesFonctions.php" method="POST">';
+                                    echo '<button class="btn-open btn-horaire" name="open">Ouvert</button>';
+                                    echo '<button class="btn-close btn-horaire" name="close">Fermer</button>';
+                                    echo '</form>';
+                                }else{
+                                    echo '';
+                                }
+                                
+                                ?>
                             </ul>
                         </div>
                     </div>
