@@ -3,7 +3,7 @@
     position: fixed;
     z-index: 999;
     right: 0;
-    top: 70px;
+    top: 50px;
     width: 500px;
     height: 600px;
     overflow: auto;
@@ -40,6 +40,7 @@
 .href > div > a {
   font-size: small;
   font-weight: 500;
+  color: white;
 }
 
 .admin{
@@ -179,7 +180,12 @@ input[type="checkbox"]:hover{
   width: 49%;
   height: 45px;
   border-radius: 2px; 
-  font-weight: 500;
+  font-weight: 300;
+  font-size: medium;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /* Button form */
 .wrapper-btn-deco{
@@ -197,6 +203,7 @@ input[type="checkbox"]:hover{
 
 #btn-login:hover{
   color: white;
+  
 }
 /*--- Modal Login ---*/
 

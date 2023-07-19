@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+  <g id="plus-square" transform="translate(0.5 0.5)">
+    <path id="Tracé_31" data-name="Tracé 31" d="M14,1a1,1,0,0,1,1,1V14a1,1,0,0,1-1,1H2a1,1,0,0,1-1-1V2A1,1,0,0,1,2,1ZM2,0A2,2,0,0,0,0,2V14a2,2,0,0,0,2,2H14a2,2,0,0,0,2-2V2a2,2,0,0,0-2-2Z" fill="#f2f2f2" stroke="#f2f2f2" stroke-width="1"/>
+    <path id="Tracé_32" data-name="Tracé 32" d="M8,4a.5.5,0,0,1,.5.5v3h3a.5.5,0,0,1,0,1h-3v3a.5.5,0,0,1-1,0v-3h-3a.5.5,0,0,1,0-1h3v-3A.5.5,0,0,1,8,4Z" fill="#f2f2f2" stroke="#f2f2f2" stroke-width="1"/>
+  </g>
+</svg>
+

@@ -1,5 +1,4 @@
 
-
 //------ MODAL DEVIS ------//
     //Bouton devis
     var btn = document.getElementById("btn-devis");
@@ -29,8 +28,6 @@
     //Ouvre la modale "ma voiture"
     btn.onclick = async function() {
         await loadPage(maVoiture,"./modal-devis/maVoiture-devis.html");
-        modal.style.display = "flex";
-        modalValid.style.display ="none";
 
     }
 
@@ -89,24 +86,88 @@
 //------ MODAL Login/Register ------//
 
 //Boutton Login Index
-var btnLogin = document.querySelector("body > header > div.flex.items-center.justify-between.text-white.m-0.h-15 > nav > ul > li.connect.mr-10.border-2.border-red-500.btn-top > a");
+var btnLogin = document.querySelector("body > header > nav > ul > div.contain-nav > li.connect.btn-top > a");
 //Boutton Register
+document.querySelector("body > header > nav > ul > div.contain-nav > li.connect.btn-top > a")
 var btn = document.getElementById("btn-devis");
 //Wrapper modal
 var modalWrapperLogin = document.getElementById("wrapperModal-login");
 //content modal
 var modalLogin = document.getElementById("modal-login")
 
+var modalRegister = document.getElementById("modal-register")
+
+var modalSession = document.getElementById("modal-session")
+
 //Ouvre la modale "Connection"
 async function clicklogin(){
+    await loadPage(modalLogin, "/src/modal-login/userLogin.php")
     modalWrapperLogin.style.display ="block";
-    await loadPage(modalLogin, "./modal-login/userLogin.php")
+    modalLogin.style.display="block";
+};
+
+async function clickRegister(){
+    await loadPage(modalRegister, "/src/modal-login/userRegister.php")
+    modalSession.style.display="none";
+    modalWrapperLogin.style.width ="420px";
+    modalWrapperLogin.style.height ="520px";
+    modalWrapperLogin.style.display ="block";
+    modalRegister.style.display="block";
+};
+
+
+async function clicksession(){
+    if(modalLogin == undefined){
+        alert('Revenir à la page d\'accueil pour accéder à cette fonctionnalité');
+    }
+    modalLogin.style.display="none";
+    modalWrapperLogin.style.display ="block";
+    modalWrapperLogin.style.width ="350px";
+    modalWrapperLogin.style.height ="250px";
+    await loadPage(modalSession, "/src/modal-login/session.php")
 };
 
 
 
 
+//----- Menu déroulant -----// 
+var currentImageIndex = 0;
+var images = document.querySelectorAll('.wrapper-menuD > div');
+var previousBtn = document.getElementById('previousBtn');
+var nextBtn = document.querySelector("#wrapperModal-login");
 
+// Affiche l'image actuelle et masque les autres
+function showImage(index) {
+  for (var i = 0; i < images.length; i++) {
+    images[i].style.display = 'none';
+  }
+  images[index].style.display = 'block';
+}
+
+// Affiche l'image suivante
+function nextImage() {
+  currentImageIndex++;
+  if (currentImageIndex >= images.length) {
+    currentImageIndex = 0;
+  }
+  showImage(currentImageIndex);
+}
+
+// Affiche l'image précédente
+function previousImage() {
+  currentImageIndex--;
+  if (currentImageIndex < 0) {
+    currentImageIndex = images.length - 1;
+  }
+  showImage(currentImageIndex);
+}
+
+// Événements de clic sur les boutons précédent et suivant
+previousBtn.addEventListener('click', previousImage);
+nextBtn.addEventListener('click', nextImage);
+
+// Affiche la première image au chargement de la page
+showImage(currentImageIndex);
 
 
 

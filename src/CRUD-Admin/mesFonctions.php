@@ -78,7 +78,70 @@ function openOrClose(){
     }
 };
 
+function getHeaderTableContact() {
+    $headers = array();
+    $headers[] = "identifiant";
+    $headers[] = "Sujet";
+    $headers[] = "Nom";
+    $headers[] = "Prénom";
+    $headers[] = "E-mail";
+    $headers[] = "Télephone";
+    $headers[] = "Message";
+    return $headers;
+}
 
+function afficherTableauContact($tabHeaders, $rows) {
+    echo '<table border="1" align="center">';
+    echo '<tr>';
+        foreach ($tabHeaders as $header){
+            echo '<th>'.$header.'</th>';
+        }
+        echo '<th>Supprimer</th>';
+    echo '</tr>';
 
+        foreach ($rows as $row){
+            echo '<tr>';
+            for ($i = 0; $i < count($tabHeaders); $i++){
+                echo '<td>'.$row[$i].'</td>';
+            }
+            echo '<td><a href="/src/contact/traitement-contact.php?id=">D</a></td>';
+            echo '</tr>';
+        }
+    echo '</table>';
 
+}
+
+function getHeaderTableAvis() {
+    $headers = array();
+    $headers[] = "identifiant";
+    $headers[] = "Nom";
+    $headers[] = "Prénom";
+    $headers[] = "Prestations";
+    $headers[] = "Note";
+    $headers[] = "Message";
+    return $headers;
+}
+
+function afficherTableauAvis($tabHeaders, $rows) {
+    echo '<table border="1" align="center">';
+    echo '<tr>';
+        foreach ($tabHeaders as $header){
+            echo '<th>'.$header.'</th>';
+        }
+        echo '<th>Supprimer</th>';
+        echo '<th>Ajouter</th>';
+    echo '</tr>';
+
+        foreach ($rows as $row){
+            echo '<tr>';
+            for ($i = 0; $i < count($tabHeaders); $i++){
+                echo '<td>'.$row[$i].'</td>';
+            }
+            echo '<td><a href="/src/contact/traitement-contact.php?id=">D</a></td>';
+            echo '<td><a href="/src/contact/traitement-contact.php?id=">A</a></td>';
+            echo '</tr>';
+        }
+    echo '</table>';
+
+}
 

@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 header{
     height: 929px; 
@@ -13,39 +11,103 @@ body{
     overflow-x: hidden;
 }
 /*------Page d'accueil------*/
-
-/*Bar navigation*/
-.contain-nav{
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 5px;
+/*NAV*/
+.contain-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
 }
-.icon{
-    height: 20px;
-    width: 20px;
+
+.logo{
+    border: 1px solid white;
+    padding: 4px 8px 7px 8px;
+    transition: border 0.2s ease;
+    margin-left: 20px;
+    height: 37px;
+}
+
+.logo > a{
     color: white;
+    font-size: large;
 }
 
-.btn-top{
+.logo:hover{
+    border: 2px solid white;
+}
+nav{
+    width: 100%;
+    height: 50px;
+    background: #262526;
+    position: fixed;
+    z-index: 10000;
+
+}
+
+nav > ul{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.contain-nav{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+}
+
+.contain-nav > li > a{
+    color: white;
+    font-size: small;
+    font-weight: 200;
+    letter-spacing: 1px;
+
+}
+.navigation{
+    margin-right: 20px;
+    transition: 0.2 ease;
+}
+.navigation:hover{
+    text-decoration: underline;
+}
+#separation{
+    height: 30px;
+    border: 1px solid white;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.btn-top {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 220px;
-    height: 35px;
+    width: 224px;
     border-radius: 2px;
+    height: 32px;
+
 }
 
-#separation{
-    height: 50px;
-    border: 1px solid white;
+.btn-top > a{
+    font-size: larger;
+    font-weight: 600;
 }
 
+.rdv{
+    border: 2px solid white;
+}
+
+.connect{
+    border: 2px solid #D92332;
+    background-color:#D92332;
+    margin-right: 20px;
+}
+/*NAV*/
 /*Bar navigation*/
 /* Menu déroulant page d'acceuil*/
 
 .wrapper-menu-deroulant-top{
-    height: 58%;
+    height: 70%;
     padding-bottom: 2%;
 }
 .contain-menu-deroulant-top{
@@ -56,18 +118,19 @@ body{
 }
 
 .chevron-left, .chevron-right{
-    height: 200px;
+    height: 100%;
     display: flex;
+    align-items: center;
 
 }
 
 .contain-menuDeroulant{
     margin-left: 10px;
     margin-right: 10px;
-    background-color: #2625268e;
+    background-color: #26252642;
     border-radius: 2px;
     width: 250px;
-    height: 200px;
+    height: 250px;
     padding: 1%;
 }
 
@@ -84,6 +147,7 @@ body{
 }
 .text-menuDeroulant{
     font-size: 11px;
+    font-weight: 400;
     
 }
 
@@ -95,15 +159,38 @@ body{
     height: 30px;
     width: 30px;
 }
+
+.wrapper-menuD {
+    width: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.wrapper-menuD > div{
+    display: none;
+    height: auto;
+  }
+
 /* Menu déroulant page d'acceuil*/
 /*------Page d'accueil------*/
 
 /*------Page main------*/
 
+.wrapper-main-services{
+    background-color: #262526;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 500px;
+}
+
 .wrapper-main-bloc1{
     display: flex;
     justify-content: center;
-    margin-top: 38px;
+    margin-top: 2%;
+    margin-bottom: 5%;
     
 }
 
@@ -122,7 +209,7 @@ body{
     color: #D92332;
     font-size: 30px;
     font-weight:600;
-   line-height: 0.7;
+    line-height: 1;
 
 }
 br{
@@ -133,8 +220,10 @@ h2{
     flex-direction: column;
     line-height: 1.3;
     align-items: flex-start;
+    justify-content: flex-start;
     color: #262526;
     font-size: 30px;
+    padding: 0px;
 
 }
 .contain-text1-main > p{
@@ -152,6 +241,11 @@ h2{
 .img1-main{
     width: 450px;
     margin-right: 1%;
+    margin-bottom: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    filter: opacity(0.8);
 }
 
 #img-bloc2{
@@ -172,30 +266,16 @@ h2{
     border-radius: 1px;
 }
 
-.bg-main-services{
-    position: absolute;
-    left: -50px;
-}
-
-.wrapper-text-services{
-    position: relative;
-    z-index: 555;
-    width: 100%;
-    top: 9%;
-    height: 585px;
-}
 
 .contain-text-services{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 6.5%;
     height: 100%;
 
 }
 
 .contain-text-services > h2{
-    padding-top: 104px;
     font-size: 17px;
     font-weight: 300;
 
@@ -436,6 +516,23 @@ h2{
     left: 150px;
 }
 
+
+.container-btn-avis{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.btn-avis{
+    background-color: #D94350;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 35px;
+    border-radius: 2px;
+    color: white;
+}
 
 /* flex avis client */
 

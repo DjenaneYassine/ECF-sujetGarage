@@ -4,10 +4,6 @@ session_start();
 
 <link rel="stylesheet" type="text/css" href="./login.css">
 <div class="contain-modal-login">
-    <div class="href">
-        <div class="admin"><a href="">Administrateur</a></div>
-        <div class="employe"><a href="">Employé</a></div>
-    </div>
     <h2>Connexion</h2>
     <form action="./modal-login/traitement-connexion.php" method="POST">
         <div class="identifiantLogin">
@@ -29,11 +25,12 @@ session_start();
         <div class="err" id="errorLogin"></div>
         <div class="contain-btnLogin">
             <button type="submit" class="btnFormLogin" name="btn">Connexion</button>
-            <button type="submit" class="btnFormLogin" name="btn-register">Créer un compte</button>
         </div>
         <?php if(isset($_SESSION['login']) && $_SESSION['login'] == true){
-            echo '<div class="wrapper-btn-deco"><input type="submit" id="btn-login" name="btn-deco" value="Se déconnecter"></div>'; 
+            
         }?>
     </form>
 </div>
+
+<script src="../script.js"></script>
 

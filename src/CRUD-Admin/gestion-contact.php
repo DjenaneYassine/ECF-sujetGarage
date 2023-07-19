@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-	<style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;600;700;800;900&display=swap');
-  </style>
 </head>
 <body>
 <style>
@@ -60,17 +57,15 @@
 
   /* Ajoutez d'autres styles CSS si nécessaire */
 </style>
-    <h1 align="center">Tableau services</h1>
+<h1 align="center">Messages clients</h1>
     <?php
 		require_once 'mesFonctionsSQL.php';
 		require_once 'mesFonctions.php';
 
-		$headers = getHeaderTable();
-		$users = getAllServices();
-		afficherTableau($headers, $users);
+		$headers = getHeaderTableContact();
+		$users = getAllContact();
+		afficherTableauContact($headers, $users);
 	?>
-
-	<a href=formulaireServices.php?id=0 >Créer un service</a> 
 	<a href="./indexAdmin.php" >Retour menu</a> 
 </body>
 </html>

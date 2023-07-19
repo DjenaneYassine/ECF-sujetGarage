@@ -1,5 +1,6 @@
 
 <?php
+session_start();
 require_once "../config.php";
 require_once "../CRUD-Admin/mesFonctionsSQL.php";
 
@@ -49,6 +50,29 @@ if (isset($_POST['btn'])){
 
     } else { 
         echo "Veuillez remplir tous les champs";
+    }
+}
+
+if (isset($_POST['btn-register'])) {
+    if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
+        if(isset ($_SESSION['role']) && $_SESSION['role'] == "admin"){
+            $pseudo = htmlspecialchars
+            ($_POST['pseudo']);
+            $mdp = sha1($_POST['password']);
+            
+            $sql = "INSERT INTO users (username, mdp, userrole) VALUES ('$pseudo', '$mdp', 'employé')";
+            $result = $connexion->query($sql);
+       
+            if ($connexion->affected_rows > 0) {
+                echo "Enregistrement créé avec succès.";
+            } else {
+                echo "Erreur lors de l'enregistrement";
+            }
+        }else{
+            echo 'Vous ne pouvez pas créer de compte';
+        }
+    } else {
+        echo "Veuillez remplir tous les champs.";
     }
 }
 

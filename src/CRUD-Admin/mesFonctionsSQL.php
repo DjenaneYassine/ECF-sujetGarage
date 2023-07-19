@@ -91,5 +91,83 @@ function updateConnex($connect, $id) {
 
 }
 
+//Récupère tous les services depuis la base de donnée
+function getAllAuto() {
+    $con = getDatabaseConnexion();
+    $res = mysqli_query($con, "SELECT * from auto");
+    $rows = mysqli_fetch_all($res);
 
+    return $rows;
+}
+
+function readAuto($id) {
+    $con = getDatabaseConnexion();
+    $requete = "SELECT * from auto where id = '$id' ";
+    $stmt = $con->query($requete);
+    $row = $stmt->fetch_All();
+    if (!empty($row)) {
+        return $row[0];
+    }
+    
+}
+
+function createAuto($prix, $image, $annee, $kilometre, $model, $boite, $des) {
+    $con = getDatabaseConnexion();
+    $sql = "INSERT INTO auto (prix, image, annee, kilometre, model, boite, description)    
+            VALUES (CONCAT('$prix', '€'), '$image', $annee, CONCAT('$kilometre', ' km'), '$model', '$boite', '$des')";
+        $con->query($sql);
+}
+
+function deleteAuto($id) {
+    $con = getDatabaseConnexion();
+    $requete = "DELETE from auto where id = '$id' ";
+    $con->query($requete);
+
+}
+
+
+
+function getAllContact() {
+    $con = getDatabaseConnexion();
+    $res = mysqli_query($con, "SELECT * from contact");
+    $rows = mysqli_fetch_all($res);
+
+    return $rows;
+}
+
+function createContact($sujet, $nom, $prenom, $email, $tel, $message) {
+    $con = getDatabaseConnexion();
+    $sql = "INSERT INTO contact (sujet, nom, prenom, adresse_mail, tel, message) 
+            VALUES ('$sujet', '$nom', '$prenom', '$email', $tel, '$message')";
+        $con->query($sql);
+}
+
+function deleteContact($id) {
+    $con = getDatabaseConnexion();
+    $requete = "DELETE from contact where id = '$id' ";
+    $con->query($requete);
+
+}
+
+function getAllAvis() {
+    $con = getDatabaseConnexion();
+    $res = mysqli_query($con, "SELECT * from avisclient");
+    $rows = mysqli_fetch_all($res);
+
+    return $rows;
+}
+
+function createAvis($nom, $prenom, $prestation, $message, $note) {
+    $con = getDatabaseConnexion();
+    $sql = "INSERT INTO avisclient (nom, prénom, prestations, msg, note) 
+            VALUES ('$nom', '$prenom', '$prestation', '$message', $note)";
+        $con->query($sql);
+}
+
+function deleteAvis($id) {
+    $con = getDatabaseConnexion();
+    $requete = "DELETE from avisclient where id = '$id' ";
+    $con->query($requete);
+
+}
 ?>
