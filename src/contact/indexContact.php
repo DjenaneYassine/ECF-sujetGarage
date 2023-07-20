@@ -68,8 +68,11 @@
 </head>
 
 <?php 
-  $id = $_GET['id'];
+if(isset($_GET['id']) && isset($_GET['model'])){
   $model = $_GET['model'];
+  $id = $_GET['id'];
+
+}
 
 ?>
 <body>
@@ -78,7 +81,7 @@
     <form method="POST" action="traitement-contact.php">
       <div class="form-group">
         <label for="sujet">Sujet</label>
-        <input type="text" name="sujet" id="sujet" <?php echo 'value="Numéro : '.$id.' | '.$model.'"' ?>required >
+        <input type="text" name="sujet" id="sujet" <?php if(isset($_GET['id'])){ echo 'value="Numéro : '.$id.' | '.$model.'"';}?>required >
       </div>
       <div class="form-group">
         <label for="nom">Nom</label>

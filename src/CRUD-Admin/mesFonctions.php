@@ -10,6 +10,7 @@ function afficherTableau($tabHeaders, $rows) {
         <?php foreach ($tabHeaders as $header): ?>
             <th><?php echo $header; ?></th>
         <?php endforeach; ?>
+            <th>Modifier/Supp</th>
         </tr>
 
         <?php foreach ($rows as $row): ?>
@@ -17,11 +18,12 @@ function afficherTableau($tabHeaders, $rows) {
             <?php for ($i = 0; $i < count($tabHeaders); $i++): ?>
                 <?php if ($i == 0){ ?>
                     <td><?php echo '<a href=formulaireServices.php?id='.$row[$i].' >'.$row[$i].'</a>'; ?></td>
-                <?php } else { ?>
-                    <td><?php echo $row[$i]; ?></td>
-                <?php } ?>
-                
+                    <?php } else { ?>
+                        <td><?php echo $row[$i]; ?></td>
+                        <?php } ?>
+                    
             <?php endfor; ?>
+            <?php echo '<td align="center"><a href="formulaireServices.php?id='.$row[0].'">Modif/Supp</a></td>'; ?>
             </tr>
         <?php endforeach; ?>
 
@@ -104,7 +106,7 @@ function afficherTableauContact($tabHeaders, $rows) {
             for ($i = 0; $i < count($tabHeaders); $i++){
                 echo '<td>'.$row[$i].'</td>';
             }
-            echo '<td><a href="/src/contact/traitement-contact.php?id=">D</a></td>';
+            echo '<td><a href="/src/CRUD-Admin/deleteContact.php?id='.$row[0].'">Supprimer</a></td>';
             echo '</tr>';
         }
     echo '</table>';
@@ -129,7 +131,7 @@ function afficherTableauAvis($tabHeaders, $rows) {
             echo '<th>'.$header.'</th>';
         }
         echo '<th>Supprimer</th>';
-        echo '<th>Ajouter</th>';
+        echo '<th>Valider</th>';
     echo '</tr>';
 
         foreach ($rows as $row){
@@ -137,11 +139,42 @@ function afficherTableauAvis($tabHeaders, $rows) {
             for ($i = 0; $i < count($tabHeaders); $i++){
                 echo '<td>'.$row[$i].'</td>';
             }
-            echo '<td><a href="/src/contact/traitement-contact.php?id=">D</a></td>';
-            echo '<td><a href="/src/contact/traitement-contact.php?id=">A</a></td>';
+            echo '<td><a href="/src/CRUD-Admin/deleteSendAvis.php?id='.$row[0].'&delete=D">Supprimer</a></td>';
+            echo '<td><a href="/src/CRUD-Admin/deleteSendAvis.php?id='.$row[0].'&nom='.$row[1].'&prenom='.$row[2].'&prest='.$row[3].
+                                                                '&note='.$row[4].'&msg='.$row[5].'&send=send">Valider</a></td>';
             echo '</tr>';
         }
     echo '</table>';
 
 }
 
+function getHeaderTableCompte() {
+    $headers = array();
+    $headers[] = "Id";
+    $headers[] = "Identifiant";
+    $headers[] = "Mot de passe";
+    $headers[] = "Role";
+    return $headers;
+}
+
+
+function afficherTableauCompte($tabHeaders, $rows) {
+    echo '<table border="1" align="center">';
+    echo '<tr>';
+        foreach ($tabHeaders as $header){
+            echo '<th>'.$header.'</th>';
+        }
+        echo '<th>Supprimer</th>';
+    echo '</tr>';
+
+        foreach ($rows as $row){
+            echo '<tr>';
+            for ($i = 0; $i < count($tabHeaders); $i++){
+                echo '<td>'.$row[$i].'</td>';
+            }
+            echo '<td><a href="/src/CRUD-Admin/deleteCompte.php?id='.$row[0].'">D</a></td>';
+            echo '</tr>';
+        }
+    echo '</table>';
+
+}

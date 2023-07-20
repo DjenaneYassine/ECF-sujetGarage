@@ -53,13 +53,13 @@ echo '</div>';
         padding: 0;
         display: flex;
         justify-content: center;
-        align-items: start;
+        align-items: center;
     }
 
     .contain-detail{
         height: 690px;
         width: 500px;
-        box-shadow: 0 0 13px 9px #00000014;
+        box-shadow: 0 0 13px 9px #0000002e;
         border-radius: 5px;
         display: flex;
         flex-direction: column;

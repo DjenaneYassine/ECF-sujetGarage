@@ -170,4 +170,36 @@ function deleteAvis($id) {
     $con->query($requete);
 
 }
+
+
+function getAllCompte() {
+    $con = getDatabaseConnexion();
+    $res = mysqli_query($con, "SELECT * from users");
+    $rows = mysqli_fetch_all($res);
+
+    return $rows;
+}
+function deleteCompte($id) {
+    $con = getDatabaseConnexion();
+    $requete = "DELETE from users where id = '$id' ";
+    $con->query($requete);
+
+}
+
+function getAllAvisValide() {
+    $con = getDatabaseConnexion();
+    $res = mysqli_query($con, "SELECT * from users");
+    $rows = mysqli_fetch_all($res);
+
+    return $rows;
+}
+
+function createAvisValide($nom, $prenom, $prestation, $message, $note) {
+    $con = getDatabaseConnexion();
+    $sql = "INSERT INTO avisvalide (nom, prénom, prestations, msg, note) 
+            VALUES ('$nom', '$prenom', '$prestation', '$message', $note)";
+        $con->query($sql);
+}
+
+
 ?>

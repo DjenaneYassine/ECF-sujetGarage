@@ -25,7 +25,6 @@ if ($connexion->connect_error) {
 
 if (isset($_POST['btn'])){
     if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
-        session_start();
         $_SESSION['login'] = false;
         $pseudo = htmlspecialchars($_POST['pseudo']);
         $mdp = sha1($_POST['password']);

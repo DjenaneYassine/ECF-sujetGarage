@@ -49,7 +49,7 @@
                         <?php if(isset($_SESSION['role']) &&  $_SESSION['role'] == "admin") {
                             echo '<li><a class="navigation" href="/src/CRUD-Admin/indexAdmin.php">Administrateur</a></li>';
                         }elseif(isset($_SESSION['role']) &&  $_SESSION['role'] == "employé"){
-                            echo '<li><a class="navigation" href="#">Employer</a></li>';
+                            echo '<li><a class="navigation" href="/src/CRUD-Admin/indexAdmin.php">Employer</a></li>';
                         }; ?>
                         <li><a class="navigation" href="#services">Services</a></li>
                         <li><a class="navigation" href="#garage">Le garage</a></li>
@@ -265,10 +265,10 @@
                         <h3>MENU</h3>
                         <div>
                             <ul>
-                                <li><a href="#">Accueil</a></li>
-                                <li><a href="#">Services</a></li>
-                                <li><a href="#">Le garage</a></li>
-                                <li><a href="#">Voiture d'occasion</a></li>
+                                <li><a href="#body">Accueil</a></li>
+                                <li><a href="#services">Services</a></li>
+                                <li><a href="#garage">Le garage</a></li>
+                                <li><a href="/src/page-venteAuto/indexAuto.php">Voiture d'occasion</a></li>
                                 <li><a href="#">A propos</a></li>
                             </ul>
                         </div>
