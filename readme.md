@@ -55,6 +55,7 @@ Un administrateur a déjà été créé dans la base de données avec les inform
 ## Notes supplémentaires
 
 - Assurez-vous que le serveur MySQL est en cours d'exécution et que vous avez correctement configuré les informations de connexion à la base de données dans le fichier `config.php`.
+- **Les fichiers de création et d’alimentation de la base de données de votre application web sont dans le fichier CRUD-Admin**
 
 
 N'hésitez pas à me contacter si vous avez des questions ou des problèmes avec l'application !
