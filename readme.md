@@ -46,8 +46,8 @@ http://localhost:3000
 ```
 7. **Création d'un administrateur pour le back-office :**
 Un administrateur a déjà été créé dans la base de données avec les informations suivantes :
-  - Identifiant : vparrot
-  - Mot de passe : aaaa
+  - Identifiant : Vincent Parrot
+  - Mot de passe : 0000
 
 8. **Vous devriez maintenant pouvoir naviguer et interagir avec l'application localement.**
 
@@ -55,7 +55,6 @@ Un administrateur a déjà été créé dans la base de données avec les inform
 ## Notes supplémentaires
 
 - Assurez-vous que le serveur MySQL est en cours d'exécution et que vous avez correctement configuré les informations de connexion à la base de données dans le fichier `config.php`.
--
 
 
 N'hésitez pas à me contacter si vous avez des questions ou des problèmes avec l'application !

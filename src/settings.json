@@ -1,6 +1,6 @@
-"tailwindCSS.emmetCompletions": true,
-"editor.inlineSuggest.enabled": true,
+"tailwindCSS.emmetCompletions": false,
+"editor.inlineSuggest.enabled": false,
 "editor.quickSuggestions": {
-   "strings": true
+   "strings": false
 },
 "css.validate": false,
